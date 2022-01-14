@@ -1,17 +1,3 @@
 ## Additional Features
 - Dashboard
-- Pelanggan
-- Supplier
-- Nota Penjualan
-- Nota Supplier
-- Retur Penjualan
-- Retur Supplier
-- Biaya
-- Pembayaran Penjualan
-- Pembayaran Piutang
-- Bank
-    - Daftar Bank
-    - Status Bank
-- Perhitugan
-    - Komisi
-    - Cashback
+- Pengguna
