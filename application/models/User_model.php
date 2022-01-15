@@ -25,13 +25,11 @@ class User_model extends Main_model
         $this->datatables->select("id_pengguna, nama_lengkap, username, email, level, (
             CASE
                 WHEN level = 'ADMIN_SUPER' THEN 'primary'
-                WHEN level = 'ADMIN_TOKO' THEN 'info'
-    			WHEN level = 'ADMIN_KEUANGAN' THEN 'success'
-    			WHEN level = 'ADMIN_SUPPLIER' THEN 'warning'
-    			WHEN level = 'ADMIN_PAJAK' THEN 'danger'
+                WHEN level = 'ANGGOTA_PPI' THEN 'danger'
     		END
         ) AS user_level")
             ->from($this->table)
+            ->where("level != 'ADMIN_SUPER'")
             ->add_column('action', $action, 'id_pengguna');
         return $this->datatables->generate();
     }

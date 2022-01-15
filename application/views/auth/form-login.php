@@ -13,7 +13,7 @@ $pengaturan = null;
 if ($getPengaturan) {
     $pengaturan = $getPengaturan[0];
 }
-$appName = "Codepos App";
+$appName = "SIM PPI";
 if($pengaturan !== null) {
 	$appName = $pengaturan->app_name;
 }
@@ -73,10 +73,10 @@ if($pengaturan !== null) {
                         <div class="card-body">
                             <form method="POST" action="<?= base_url('auth'); ?>" class="needs-validation" novalidate="">
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input id="email" type="email" class="form-control" value="<?php echo set_value('email') ?>" name="email" tabindex="1" required autofocus autocomplete="off">
+                                    <label for="username">Username</label>
+                                    <input id="username" type="username" class="form-control" value="<?php echo set_value('username') ?>" name="username" tabindex="1" required autofocus autocomplete="off">
                                     <div class="invalid-feedback">
-                                        Please fill in your email
+                                        Please fill in your username
                                     </div>
                                 </div>
 

@@ -144,5 +144,6 @@ $autoload['model'] = [
     'Keterangan_model' => 'Keterangan',
     'Pelanggan_model' => 'Pelanggan',
     'Profil_perusahaan_model' => 'Profilperusahaan',
-    'Pengaturan_model' => 'Pengaturan'
+    'Pengaturan_model' => 'Pengaturan',
+    'Biodata_model' => 'Biodata'
 ];

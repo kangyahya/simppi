@@ -261,6 +261,7 @@ class User extends CI_Controller
         $data = [
             'title' => 'Profil pengguna',
             'user' => $this->User->findById(['id_pengguna' => $id_pengguna]),
+            'biodata' => $this->Biodata->findById(['nra' => getUser('username')]),
             'user_levels' => $list_user_levels
         ];
         if (isset($_POST['update'])) {
@@ -407,6 +408,23 @@ class User extends CI_Controller
         } else {
             redirect(base_url('user/profile') . '?show_modal=true');
         }
+    }
+    public function kta()
+    {
+        $id_pengguna = getUser('id_pengguna');
+        $list_user_levels = getUserLevel();
+        $data = [
+            'title' => 'Kartu Tanda Anggota',
+            'user' => $this->User->findById(['id_pengguna' => $id_pengguna]),
+            'biodata' => $this->Biodata->findById(['nra' => getUser('username')]),
+            'user_levels' => $list_user_levels
+        ];
+        $this->main_lib->getTemplate("user/kta", $data);
+
+    }
+    public function cetak_kta()
+    {
+        $this->load->view('kta/cetak_kta');
     }
 }
 

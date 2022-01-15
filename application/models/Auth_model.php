@@ -8,7 +8,7 @@ class Auth_model extends User_model {
 	public function login($credentials)
 	{
 		$sql = $this->db->get_where($this->table, [
-			'email' => $credentials['email']
+			'username' => $credentials['username']
 		]);
 		$check = $sql->num_rows();
 

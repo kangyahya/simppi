@@ -77,9 +77,14 @@ if($uri1 == "bank" || $uri1 == "rekening-koran") {
 				</li>
             <?php endif; ?>
             <?php if (showOnlyTo("2")): ?>
-				<li class="dropdown <?= $uri1 == 'profile' ? 'active' : ''; ?>">
-					<a href="<?= base_url('profile'); ?>" class="nav-link">
+				<li class="dropdown <?= $uri1 == 'user' && $uri2 == 'profile' ? 'active' : ''; ?>">
+					<a href="<?= base_url('user/profile'); ?>" class="nav-link">
 						<i class="fas fa-user-alt"></i><span>Profile</span>
+					</a>
+				</li>
+				<li class="dropdown <?= $uri1 == 'user' && $uri2 == 'kta' ? 'active' : ''; ?>">
+					<a href="<?= base_url('user/kta'); ?>" class="nav-link">
+						<i class="fas fa-credit-card"></i><span>KTA</span>
 					</a>
 				</li>
             <?php endif; ?>

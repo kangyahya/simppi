@@ -15,13 +15,13 @@ class Authentication extends CI_Controller {
         }
 
 	    if(isset($_POST['submit'])) {
-            $email = $this->input->post('email');
+            $username = $this->input->post('username');
             $password = $this->input->post('password');
 
             $rules = [
 				[
-					'field' => 'email',
-					'label'	=> 'E-mail',
+					'field' => 'username',
+					'label'	=> 'Username',
 					'rules' => 'required'
 				],
 				[
@@ -38,7 +38,7 @@ class Authentication extends CI_Controller {
                 $this->load->view('auth/form-login', $data);
             } else {
                 $credentials = [
-                    'email' => $email,
+                    'username' => $username,
                     'password' => $password
                 ];
                 $login = $this->Auth->login($credentials);

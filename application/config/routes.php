@@ -25,7 +25,3 @@ $route['pengaturan-aplikasi/edit'] = 'Pengaturan/edit';
 
 //Export excel routes
 $route['export-excel/(:any)'] = 'ExportExcel/$1';
-
-$route['perhitungan/(:any)'] = 'Perhitungan/index/$1';
-$route['cetak/komisi'] = 'Cetak/perhitungan/komisi';
-$route['cetak/cashback'] = 'Cetak/perhitungan/cashback';

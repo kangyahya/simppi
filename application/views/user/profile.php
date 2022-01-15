@@ -67,7 +67,7 @@ $userPictureSrc = (getUser('picture') != '') ? getUser('picture') : 'assets/img/
                                         <?php echo form_error('email'); ?>
 									</div>
 								</div>
-
+								<?php if (showOnlyTo("1")): ?>
 								<div class="form-group row">
 									<label for="" class="col-sm-3 col-form-label">Jenis Pengguna</label>
 									<div class="col-sm-9">
@@ -80,6 +80,64 @@ $userPictureSrc = (getUser('picture') != '') ? getUser('picture') : 'assets/img/
                                         <?php echo form_error('level'); ?>
 									</div>
 								</div>
+								<?php endif; ?>
+								<?php if(showOnlyTo("2")): ?>
+								<div class="form-group row">
+									<label for="" class="col-sm-3 col-form-label">Tempat, Tanggal Lahir</label>
+									<div class="col-sm-9">
+										<input type="text" required name="tempat_tanggal_lahir" value="<?php echo $biodata->tempat_tanggal_lahir; ?>" class="form-control" placeholder="Tempat, Tanggal Lahir" autocomplete="off">
+                                        <?php echo form_error('tempat_tanggal_lahir'); ?>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="" class="col-sm-3 col-form-label">Golongan Darah</label>
+									<div class="col-sm-9">
+										<input type="text" required name="golongan_darah" value="<?php echo $biodata->golongan_darah; ?>" class="form-control" placeholder="Golongan Darah" autocomplete="off">
+                                        <?php echo form_error('golongan_darah'); ?>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="" class="col-sm-3 col-form-label">Agama</label>
+									<div class="col-sm-9">
+										<input type="text" required name="agama" value="<?php echo $biodata->agama; ?>" class="form-control" placeholder="Agama" autocomplete="off">
+                                        <?php echo form_error('agama'); ?>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="" class="col-sm-3 col-form-label">Jenis Kelamin</label>
+									<div class="col-sm-9">
+										<input type="text" required name="jenis_kelamin" value="<?php echo $biodata->jenis_kelamin; ?>" class="form-control" placeholder="Jenis Kelamin" autocomplete="off">
+                                        <?php echo form_error('jenis_kelamin'); ?>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="" class="col-sm-3 col-form-label">Alamat Rumah</label>
+									<div class="col-sm-9">
+										<textarea name="alamat_rumah" class="form-control z-depth-1" rows="3"><?=$biodata->alamat_rumah; ?></textarea>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="" class="col-sm-3 col-form-label">Asal Sekolah</label>
+									<div class="col-sm-9">
+										<input type="text" required name="asal_sekolah" value="<?php echo $biodata->asal_sekolah; ?>" class="form-control" placeholder="Asal Sekolah" autocomplete="off">
+                                        <?php echo form_error('asal_sekolah'); ?>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="" class="col-sm-3 col-form-label">Tingkat</label>
+									<div class="col-sm-9">
+										<input type="text" required name="tingkat_paskibraka" value="<?php echo $biodata->tingkat_paskibraka; ?>" class="form-control" placeholder="Tingkat Paskibraka" autocomplete="off">
+                                        <?php echo form_error('tingkat_paskibraka'); ?>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="" class="col-sm-3 col-form-label">No. Hp</label>
+									<div class="col-sm-9">
+										<input type="text" required name="no_hp" value="<?php echo $biodata->no_hp; ?>" class="form-control" placeholder="Nomor Handphone" autocomplete="off">
+                                        <?php echo form_error('no_hp'); ?>
+									</div>
+								</div>
+								<?php endif; ?>
 								<div class="form-group row">
 									<div class="col-sm-12 text-right">
 										<button type="submit" name="update" class="btn btn-primary">Simpan Perubahan</button>

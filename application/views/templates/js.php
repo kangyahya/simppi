@@ -69,22 +69,6 @@ if ($this->uri->segment(1) == "daftar-bayar") { ?>
 <script src="<?php echo base_url(); ?>assets/modules/jquery-ui/jquery-ui.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
 
-<?php if ($uri1 == "pembayaran-piutang" && ($uri2 == "create" || $uri2 == "edit")): ?>
-	<script src="<?php echo base_url(); ?>assets/js/pembayaran-piutang.js"></script>
-<?php elseif ($uri1 == "pembayaran-hutang" && ($uri2 == "create" || $uri2 == "edit")): ?>
-	<script src="<?php echo base_url(); ?>assets/js/pembayaran-hutang.js"></script>
-<?php elseif ($uri1 == "pelanggan" && $uri2 == "piutang"): ?>
-	<script src="<?php echo base_url(); ?>assets/js/piutang-pelanggan.js"></script>
-<?php elseif ($uri1 == "supplier" && $uri2 == "hutang"): ?>
-	<script src="<?php echo base_url(); ?>assets/js/hutang-supplier.js"></script>
-<?php elseif ($uri1 == "pengaturan-aplikasi" || $uri1 == "pengaturan"): ?>
-	<script src="<?php echo base_url(); ?>assets/js/setting.js"></script>
-<?php elseif ($uri1 == "rekening-koran" && ($uri2 == "create" || $uri2 == "edit")): ?>
-	<script src="<?php echo base_url(); ?>assets/js/rekening-koran.js"></script>
-<?php elseif ($uri1 == "bank"): ?>
-	<script src="<?php echo base_url(); ?>assets/js/bank.js"></script>
-<?php endif; ?>
-
 <script>
     $(document).ready(function () {
         <?php if($uri1 == "dashboard"): ?>
