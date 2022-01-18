@@ -208,6 +208,7 @@ class User extends CI_Controller
 
         if ($type == "update") {
             //Rule when update user
+            
             $rules = [
                 [
                     'field' => 'nama_lengkap',
@@ -217,7 +218,7 @@ class User extends CI_Controller
                 [
                     'field' => 'username',
                     'label' => 'Username',
-                    'rules' => 'required|min_length[6]|max_length[30]'
+                    'rules' => 'required|min_length[5]|max_length[30]'
                 ],
                 [
                     'field' => 'email',
@@ -258,11 +259,13 @@ class User extends CI_Controller
     {
         $id_pengguna = getUser('id_pengguna');
         $list_user_levels = getUserLevel();
+        $list_religi = getReligi();
         $data = [
             'title' => 'Profil pengguna',
             'user' => $this->User->findById(['id_pengguna' => $id_pengguna]),
             'biodata' => $this->Biodata->findById(['nra' => getUser('username')]),
-            'user_levels' => $list_user_levels
+            'user_levels' => $list_user_levels,
+            'agama' => $list_religi
         ];
         if (isset($_POST['update'])) {
             $rules = $this->_rules('update');
@@ -272,26 +275,71 @@ class User extends CI_Controller
             if ($this->form_validation->run() === FALSE) {
                 $this->main_lib->getTemplate('user/profile', $data);
             } else {
-                $user_data = [
-                    'nama_lengkap' => $this->main_lib->getPost('nama_lengkap'),
-                    'username' => $this->main_lib->getPost('username'),
-                    'email' => $this->main_lib->getPost('email'),
-                    'level' => $this->main_lib->getPost('level')
-                ];
-
-                $update = $this->User->update($user_data, ['id_pengguna' => $id_pengguna]);
-                if ($update) {
-                    $messages = [
-                        'type' => 'success',
-                        'text' => 'Profil berhasil diperbarui!',
+                if(getUser('level') == "ADMIN_SUPER"):
+                    $user_data = [
+                        'nama_lengkap' => $this->main_lib->getPost('nama_lengkap'),
+                        'username' => $this->main_lib->getPost('username'),
+                        'email' => $this->main_lib->getPost('email'),
+                        'level' => $this->main_lib->getPost('level')
                     ];
-                } else {
-                    $messages = [
-                        'type' => 'error',
-                        'text' => 'Gagal memperbarui profil!'
+                    $update = $this->User->update($user_data, ['id_pengguna' => $id_pengguna]);
+                    if ($update) {
+                        $messages = [
+                            'type' => 'success',
+                            'text' => 'Profil berhasil diperbarui!',
+                        ];
+                    } else {
+                        $messages = [
+                            'type' => 'error',
+                            'text' => 'Gagal memperbarui profil!'
+                        ];
+                    }
+                
+                elseif(getUser("level") == "ANGGOTA_PPI"):
+                    $user_data = [
+                        'nama_lengkap' => $this->main_lib->getPost('nama_lengkap'),
+                        'username' => $this->main_lib->getPost('username'),
+                        'email' => $this->main_lib->getPost('email'),
+                        'level' => $this->main_lib->getPost('level')
                     ];
-                }
-
+                    $update = $this->User->update($user_data, ['id_pengguna' => $id_pengguna]);
+                    if ($update) {
+                        $messages = [
+                            'type' => 'success',
+                            'text' => 'Profil berhasil diperbarui!',
+                        ];
+                    } else {
+                        $messages = [
+                            'type' => 'error',
+                            'text' => 'Gagal memperbarui profil!'
+                        ];
+                    }
+                    $user_biodata = [
+                        'nama_lengkap' => $this->main_lib->getPost('nama_lengkap'),
+                        'tempat_tanggal_lahir' => $this->main_lib->getPost('tempat_tanggal_lahir'),
+                        'golongan_darah' => $this->main_lib->getPost('golongan_darah'),
+                        'agama' => $this->main_lib->getPost('agama'),
+                        'jenis_kelamin' => $this->main_lib->getPost('jenis_kelamin'),
+                        'alamat_rumah' => $this->main_lib->getPost('alamat_rumah'),
+                        'asal_sekolah' => $this->main_lib->getPost('asal_sekolah'),
+                        'tingkat_paskibraka' => $this->main_lib->getPost('tingkat_paskibraka'),
+                        'no_hp' => $this->main_lib->getPost('no_hp'),
+                        'email' => $this->main_lib->getPost('email')
+                        
+                    ];
+                    $updatebiodata = $this->Biodata->update($user_biodata, ['nra' => $this->main_lib->getPost('username')]);
+                    if ($updatebiodata) {
+                        $messages = [
+                            'type' => 'success',
+                            'text' => 'Biodata berhasil diperbarui!',
+                        ];
+                    } else {
+                        $messages = [
+                            'type' => 'error',
+                            'text' => 'Gagal memperbarui biodata!'
+                        ];
+                    }
+                endif;
                 $this->session->set_flashdata('message', $messages);
                 redirect(base_url('user/profile'), 'refresh');
             }

@@ -82,6 +82,7 @@ $userPictureSrc = (getUser('picture') != '') ? getUser('picture') : 'assets/img/
 								</div>
 								<?php endif; ?>
 								<?php if(showOnlyTo("2")): ?>
+									<input type="hidden" value="<?=$user->level?>" name="level">
 								<div class="form-group row">
 									<label for="" class="col-sm-3 col-form-label">Tempat, Tanggal Lahir</label>
 									<div class="col-sm-9">
@@ -99,7 +100,12 @@ $userPictureSrc = (getUser('picture') != '') ? getUser('picture') : 'assets/img/
 								<div class="form-group row">
 									<label for="" class="col-sm-3 col-form-label">Agama</label>
 									<div class="col-sm-9">
-										<input type="text" required name="agama" value="<?php echo $biodata->agama; ?>" class="form-control" placeholder="Agama" autocomplete="off">
+										<select name="agama" id="inputSelect" required class="form-control">
+											<option disabled>-- Pilih Agama --</option>
+                                            <?php foreach ($agama as $key => $val): ?>
+												<option <?= ($biodata->agama == $key) ? 'selected' : ''; ?> value="<?php echo $key; ?>"><?php echo ucwords(strtolower($val)); ?></option>
+                                            <?php endforeach; ?>
+										</select>
                                         <?php echo form_error('agama'); ?>
 									</div>
 								</div>

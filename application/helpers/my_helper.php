@@ -71,6 +71,22 @@ function getUserLevel($index = null)
     return $user_level_lists;
 }
 
+function getReligi($index = null)
+{
+    $religi_lists = [
+        'ISLAM' => 'Islam',
+        'PROTESTAN' => 'Protestan',
+        'KATOLIK' => 'Katolik',
+        'HINDU' => 'Hindu',
+        'BUDDHA' => 'Budha',
+        'KONGHUCU' => 'Konghucu'
+    ];
+    if($index !== null){
+        return $religi_lists[$index];
+    }
+    return $religi_lists;
+}
+
 function getUserTypeCode($code = null)
 {
     $userLevel = getUserLevel();
